@@ -1,0 +1,2 @@
+# Untar Data
+This component untars data to specified directory. It was converted to a shell script due to the weirdness of the '-C' argument needed for tar and a weird issue with compound shell commands in the python kfp SDK.
