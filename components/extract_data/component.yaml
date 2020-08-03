@@ -1,0 +1,16 @@
+name: Extract Data
+description: Retreive data file from specified URL
+inputs: # List of input specs. Each input spec is a map.
+- {name: tar_file}
+outputs:
+- {name: data_dir}
+implementation:
+  container:
+    image: etheredgeb/gloves:extract_data
+    command: [
+      sh, /pipeline/component/src/untar.sh, # Path of the program inside the container
+    ]
+    args: [
+      {outputPath: data_dir},
+      {inputPath: tar_file},
+    ]

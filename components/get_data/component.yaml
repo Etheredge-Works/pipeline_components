@@ -1,0 +1,16 @@
+name: Get Data
+description: Retreive data file from specified URL
+inputs: # List of input specs. Each input spec is a map.
+- {name: data_url}
+outputs:
+- {name: tar_file}
+implementation:
+  container:
+    image: etheredgeb/gloves:get_data
+    command: [
+      sh, /pipeline/component/src/get_data.sh, # Path of the program inside the container
+    ]
+    args: [
+      {inputValue: data_url},
+      {outputPath: tar_file},
+    ]
