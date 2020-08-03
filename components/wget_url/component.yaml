@@ -3,7 +3,7 @@ description: Retreive data file from specified URL
 inputs: # List of input specs. Each input spec is a map.
 - {name: data_url}
 outputs:
-- {name: tar_file}
+- {name: output_file}
 implementation:
   container:
     image: etheredgeb/gloves:get_data
@@ -12,5 +12,5 @@ implementation:
     ]
     args: [
       {inputValue: data_url},
-      {outputPath: tar_file},
+      {outputPath: output_file},
     ]
