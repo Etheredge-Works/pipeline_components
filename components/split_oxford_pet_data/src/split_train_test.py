@@ -21,11 +21,11 @@ def main(dir, ratio, train_dir, test_dir):
     train_dir = Path(train_dir)
     if train_dir.exists():
         shutil.rmtree(str(train_dir))
-    train_dir.mkdir()
+    train_dir.mkdir(parents=True)
     test_dir = Path(test_dir)
     if test_dir.exists():
         shutil.rmtree(str(test_dir))
-    test_dir.mkdir()
+    test_dir.mkdir(parents=True)
 
     all_files = list(dir.glob('*jpg'))
     assert len(all_files) > 0

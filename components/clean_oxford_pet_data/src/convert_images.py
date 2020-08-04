@@ -11,7 +11,7 @@ def main(data_dir, cleaned_dir_name):
     path_images =pathlib.Path(data_dir)
     new_path = pathlib.Path(cleaned_dir_name)
     if not new_path.exists():
-        new_path.mkdir()
+        new_path.mkdir(parents=True, exist_ok=True)
     count = 0
 
     filenames_src = tf.io.gfile.listdir(str(path_images))
