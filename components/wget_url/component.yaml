@@ -8,7 +8,7 @@ implementation:
   container:
     image: etheredgeb/gloves:wget_url
     command: [
-      sh, /pipeline/component/src/get_data.sh, # Path of the program inside the container
+      sh, /pipelines/component/src/get_data.sh, # Path of the program inside the container
     ]
     args: [
       {inputValue: data_url},
