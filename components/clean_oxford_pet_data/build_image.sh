@@ -1,6 +1,6 @@
 #!/bin/bash -e
 image_name=etheredgeb/gloves
-image_tag=clean-oxford_pet_data
+image_tag=clean_oxford_pet_data
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 
