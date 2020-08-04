@@ -12,5 +12,6 @@ implementation:
     ]
     args: [
       {outputPath: data_dir},
-      {inputPath: tar_file},
+      {inputPath: path_to_tar_file}, # This is a work around due to not being about to specifiy tar file names when downloading
+      {inputValue: tar_file_name},
     ]
