@@ -1,2 +1,2 @@
-FROM tensorflow/tensorflow:2.3.0
-RUN pip install pillow
+FROM python:3.7
+COPY ./src /pipelines/component/src
