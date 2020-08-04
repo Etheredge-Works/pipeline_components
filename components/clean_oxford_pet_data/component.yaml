@@ -1,4 +1,4 @@
-name: Clean Data
+name: Clean Oxford Pet Data
 description: Convert/clean corrupted/misnamed images from data
 inputs: # List of input specs. Each input spec is a map.
 - {name: data_dir}
