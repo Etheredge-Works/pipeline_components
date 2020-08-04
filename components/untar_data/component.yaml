@@ -2,6 +2,7 @@ name: Untar Data
 description: Retreive data file from specified URL
 inputs: # List of input specs. Each input spec is a map.
 - {name: tar_file_name}
+- {name: path_to_tar_file}
 outputs:
 - {name: data_dir}
 implementation:
