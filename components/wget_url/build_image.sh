@@ -1,6 +1,6 @@
 #!/bin/bash -e
 image_name=etheredgeb/gloves
-image_tag=get_data
+image_tag=wget_url
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 

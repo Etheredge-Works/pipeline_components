@@ -1,6 +1,6 @@
 #!/bin/bash -e
 image_name=etheredgeb/gloves
-image_tag=extract_data
+image_tag=untar_data
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 

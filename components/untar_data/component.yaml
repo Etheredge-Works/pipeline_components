@@ -6,7 +6,7 @@ outputs:
 - {name: data_dir}
 implementation:
   container:
-    image: etheredgeb/gloves:extract_data
+    image: etheredgeb/gloves:untar_data
     command: [
       sh, /pipeline/component/src/untar.sh, # Path of the program inside the container
     ]
