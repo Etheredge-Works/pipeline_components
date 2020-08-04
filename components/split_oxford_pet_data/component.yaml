@@ -1,0 +1,16 @@
+name: Clean Data
+description: Convert/clean corrupted/misnamed images from data
+inputs: # List of input specs. Each input spec is a map.
+- {name: data_dir}
+outputs:
+- {name: cleaned_data_dir}
+implementation:
+  container:
+    image: etheredgeb/gloves:split_oxford_pet_data
+    command: [
+      python, /pipeline/component/src/convert_images.py, # Path of the program inside the container
+    ]
+    args: [
+      --data_dir, {inputPath: data_dir},
+      --cleaned_dir_name, {outputPath: cleaned_data_dir},
+    ]
