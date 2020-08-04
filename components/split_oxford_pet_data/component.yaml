@@ -16,5 +16,5 @@ implementation:
       --data_dir, {inputPath: data_dir},
       --train_dir, {outputPath: train_dir},
       --test_dir, {outputPath: test_dir},
-      --ratio, {inputPath: split_ratio},
+      --ratio, {inputValue: split_ratio},
     ]
