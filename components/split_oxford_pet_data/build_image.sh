@@ -1,6 +1,6 @@
 #!/bin/bash -e
-image_name=etheredgeb/gloves
-image_tag=split_oxford_pet_data
+image_name=etheredgeb/split_oxford_pet_data
+image_tag=0.1
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 

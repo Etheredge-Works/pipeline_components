@@ -6,7 +6,7 @@ outputs:
 - {name: cleaned_data_dir}
 implementation:
   container:
-    image: etheredgeb/gloves:clean_oxford_pet_data
+    image: etheredgeb/clean_oxford_pet_data
     command: [
       python, /pipelines/component/src/convert_images.py, # Path of the program inside the container
     ]

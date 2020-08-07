@@ -8,7 +8,7 @@ outputs:
 - {name: test_dir}
 implementation:
   container:
-    image: etheredgeb/gloves:split_oxford_pet_data
+    image: etheredgeb/split_oxford_pet_data
     command: [
       python, /pipelines/component/src/split_train_test.py, # Path of the program inside the container
     ]
