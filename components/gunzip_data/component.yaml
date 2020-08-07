@@ -7,7 +7,7 @@ outputs:
 - {name: data_dir}
 implementation:
   container:
-    image: etheredgeb/untar_data:0.1
+    image: etheredgeb/gunzip_data:0.1
     command: [
       sh, /pipelines/component/src/gunzip.sh, # Path of the program inside the container
     ]
