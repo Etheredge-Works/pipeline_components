@@ -6,7 +6,7 @@ outputs:
 - {name: output_file}
 implementation:
   container:
-    image: etheredgeb/gloves:wget_url
+    image: etheredgeb/wget_url
     command: [
       sh, /pipelines/component/src/get_data.sh, # Path of the program inside the container
     ]
