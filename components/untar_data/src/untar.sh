@@ -1,10 +1,13 @@
 #! /bin/bash
-data_dir=$1
-path_to_tar_file=$2
-tar_file_name=$3
-echo "Data Dir: " $1
-echo "Path to Tar File: " $2
-echo "Tar File Name: " $3
+tar_args=$1
+data_dir=$2
+path_to_tar_file=$3
+tar_file_name=$4
+echo "Tar Args: " $1
+echo "Data Dir: " $2
+echo "Path to Tar File: " $3
+echo "Tar File Name: " $4
 
 mkdir -p $data_dir
-tar xzf $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1
+tar tar_args $path_to_tar_file -C $data_dir --strip-components 1
+#tar xzf $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1

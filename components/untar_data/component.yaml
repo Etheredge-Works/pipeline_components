@@ -1,6 +1,7 @@
 name: Untar Data
 description: Retreive data file from specified URL
 inputs: # List of input specs. Each input spec is a map.
+- {name: tar_args, Default: "xzf"}
 - {name: tar_file_name}
 - {name: path_to_tar_file}
 outputs:
@@ -12,6 +13,7 @@ implementation:
       sh, /pipelines/component/src/untar.sh, # Path of the program inside the container
     ]
     args: [
+      {inputPath: tar_args}, # This is a work around due to not being about to specifiy tar file names when downloading
       {outputPath: data_dir},
       {inputPath: path_to_tar_file}, # This is a work around due to not being about to specifiy tar file names when downloading
       {inputValue: tar_file_name},
