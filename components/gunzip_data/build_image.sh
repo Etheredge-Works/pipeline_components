@@ -1,6 +1,6 @@
 #!/bin/bash -e
 image_name=etheredgeb/gunzip_data
-image_tag=0.1
+image_tag=0.2
 full_image_name=${image_name}:${image_tag}
 
 cd "$(dirname "$0")" 
