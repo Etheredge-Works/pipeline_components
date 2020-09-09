@@ -1,0 +1,16 @@
+name: Clean KDDCup 99 Pet Data
+description: TODO
+inputs: # List of input specs. Each input spec is a map.
+- {name: data_dir}
+outputs:
+- {name: cleaned_data_dir}
+implementation:
+  container:
+    image: etheredgeb/clean_kdd_data
+    command: [
+      python, /pipelines/component/src/main.py, # Path of the program inside the container
+    ]
+    args: [
+      --data_dir, {inputPath: data_dir},
+      --cleaned_dir_name, {outputPath: cleaned_data_dir},
+    ]
