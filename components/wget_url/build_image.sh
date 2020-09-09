@@ -1,7 +1,8 @@
 #!/bin/bash -e
 image_name=etheredgeb/wget_url
 image_tag=0.1
-full_image_name=${image_name}:${image_tag}
+#full_image_name=${image_name}:${image_tag}
+full_image_name=${image_name}
 
 cd "$(dirname "$0")" 
 docker build -t "${full_image_name}" .
