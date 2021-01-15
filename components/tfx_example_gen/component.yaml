@@ -1,0 +1,20 @@
+name: Split Oxford Pet Data
+description: Split test date for one-shot learning training
+inputs: # List of input specs. Each input spec is a map.
+- {name: data_dir}
+- {name: split_ratio}
+outputs:
+- {name: train_dir}
+- {name: test_dir}
+implementation:
+  container:
+    image: etheredgeb/tfx_example_gen
+    command: [
+      python, /pipelines/component/src/split_train_test.py, # Path of the program inside the container
+    ]
+    args: [
+      --data_dir, {inputPath: data_dir},
+      --train_dir, {outputPath: train_dir},
+      --test_dir, {outputPath: test_dir},
+      --ratio, {inputValue: split_ratio},
+    ]
