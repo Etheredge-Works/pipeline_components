@@ -8,6 +8,9 @@ echo "Data Dir: " $2
 echo "Path to Tar File: " $3
 echo "Tar File Name: " $4
 
+echo "pls..."
 mkdir -p $data_dir
-tar tar_args $path_to_tar_file -C $data_dir --strip-components 1
+#tar $tar_args $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1
+echo "tar xvzf $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1"
+tar -xvzf $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1
 #tar xzf $path_to_tar_file/$tar_file_name -C $data_dir --strip-components 1
