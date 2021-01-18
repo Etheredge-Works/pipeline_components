@@ -1,14 +1,14 @@
 name: Untar Data
 description: Retreive data file from specified URL
 inputs: # List of input specs. Each input spec is a map.
-- {name: tar_args, default: "xvzf"}
+- {name: tar_args, default: "xvzf"} # not used currently
 - {name: tar_file_name}
 - {name: path_to_tar_file}
 outputs:
 - {name: data_dir}
 implementation:
   container:
-    image: etheredgeb/untar_data:0.1
+    image: etheredgeb/untar_data
     command: [
       sh, /pipelines/component/src/untar.sh, # Path of the program inside the container
     ]
