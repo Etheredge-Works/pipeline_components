@@ -2,7 +2,7 @@ name: Split Oxford Pet Data
 description: Split test date for one-shot learning training
 inputs: # List of input specs. Each input spec is a map.
 - {name: data_dir}
-- {name: split_ratio}
+- {name: split_ratio, type: Float}
 outputs:
 - {name: train_dir}
 - {name: test_dir}
