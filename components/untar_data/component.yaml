@@ -8,10 +8,7 @@ outputs:
 - {name: data_dir}
 implementation:
   container:
-    image: etheredgeb/untar_data
-    command: [
-      sh, /pipelines/component/src/untar.sh, # Path of the program inside the container
-    ]
+    image: etheredgeb/untar_data:latest
     args: [
       {inputValue: tar_args}, # This is a work around due to not being about to specifiy tar file names when downloading
       {outputPath: data_dir},

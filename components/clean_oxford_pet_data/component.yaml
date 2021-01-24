@@ -5,11 +5,7 @@ inputs: # List of input specs. Each input spec is a map.
 outputs:
 - {name: cleaned_data_dir}
 implementation:
-  container:
-    image: etheredgeb/clean_oxford_pet_data:0.1
-    command: [
-      python, /pipelines/component/src/convert_images.py, # Path of the program inside the container
-    ]
+  container: etheredgeb/clean_oxford_pet_data:latest
     args: [
       --data_dir, {inputPath: data_dir},
       --cleaned_dir_name, {outputPath: cleaned_data_dir},
