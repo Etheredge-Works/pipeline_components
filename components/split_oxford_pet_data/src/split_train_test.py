@@ -15,9 +15,9 @@ import click
 @click.option('--ratio', type=click.FLOAT, help='')
 @click.option('--train-dir', type=click.Path(exists=False), help='')
 @click.option('--test-dir', type=click.Path(exists=False), help='')
-@click.option('--seed', type=click.INT, help='')
-def main(data_dir, ratio, train_dir, test_dir, seed):
-    seed(seed)
+@click.option('--random-seed', type=click.INT, help='')
+def main(data_dir, ratio, train_dir, test_dir, random_seed):
+    seed(random_seed)
     def copy_files(files: list, dir: Path) -> None:
         for file in files:
             shutil.copyfile(str(file), str(dir/basename(file)))
