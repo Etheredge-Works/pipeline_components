@@ -1,0 +1,12 @@
+name: Create Dir
+description: TODO
+outputs:
+- {name: output, type: LocalPath}
+implementation:
+  container:
+    image: alpine:latest
+    command: ['mkdir']
+    args: [
+      '-p', 
+      {outputPath: output},
+    ]
