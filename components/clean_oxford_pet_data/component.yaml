@@ -6,7 +6,7 @@ outputs:
 - {name: cleaned_data_dir}
 implementation:
   container: etheredgeb/clean_oxford_pet_data:latest
-    args: [
+  args: [
       --data_dir, {inputPath: data_dir},
       --cleaned_dir_name, {outputPath: cleaned_data_dir},
     ]
