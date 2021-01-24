@@ -11,9 +11,9 @@ implementation:
   container:
     image: etheredgeb/split_oxford_pet_data:latest
     args: [
-      --data_dir, {inputPath: data_dir},
-      --train_dir, {outputPath: train_dir},
-      --test_dir, {outputPath: test_dir},
+      --data-dir, {inputPath: data_dir},
+      --train-dir, {outputPath: train_dir},
+      --test-dir, {outputPath: test_dir},
       --ratio, {inputValue: split_ratio},
       --seed, {inputValue: seed},
     ]

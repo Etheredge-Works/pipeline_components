@@ -11,19 +11,19 @@ import re
 import click
 
 @click.command()
-@click.option('--dir', type=click.Path(exists=True), help='')
+@click.option('--data-dir', type=click.Path(exists=True), help='')
 @click.option('--ratio', type=click.FLOAT, help='')
 @click.option('--train-dir', type=click.Path(exists=False), help='')
 @click.option('--test-dir', type=click.Path(exists=False), help='')
 @click.option('--seed', type=click.INT, help='')
-def main(dir, ratio, train_dir, test_dir, seed):
+def main(data_dir, ratio, train_dir, test_dir, seed):
     seed(seed)
     def copy_files(files: list, dir: Path) -> None:
         for file in files:
             shutil.copyfile(str(file), str(dir/basename(file)))
             
     #dir, ratio, train_dir, test_dir = sys.argv[1:]
-    dir = Path(dir)
+    data_dir = Path(data_dir)
     ratio = float(ratio)
     assert 0 <= ratio <= 1.0
     train_dir = Path(train_dir)
@@ -49,7 +49,7 @@ def main(dir, ratio, train_dir, test_dir, seed):
     def get_label(filename):
         return re.search(r'^(.*)_\d+\.jpg$', filename)
 
-    labels = set(get_label(str(file)) for file in all_files])
+    labels = set([get_label(str(file)) for file in all_files])
     for item in labels:
         assert item is not None
     label_count = len(labels)
