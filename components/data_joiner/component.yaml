@@ -1,0 +1,17 @@
+name: Join 2 dirs
+description: TODO
+inputs: # List of input specs. Each input spec is a map.
+- {name: dir_1}
+- {name: dir_2}
+outputs:
+- {name: out_dir}
+implementation:
+  container:
+    image: alpine
+    command: 'cp'
+    args: [
+      '-r',
+      {inputPath: dir_1},
+      {inputPath: dir_2},
+      {outputPath: out_dir},
+    ]
