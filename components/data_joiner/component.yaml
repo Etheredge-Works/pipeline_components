@@ -8,8 +8,12 @@ outputs:
 implementation:
   container:
     image: alpine:latest
-    command: ['cp']
+    command: ['mkdir']
     args: [
+      'mkdir', '-p', 
+      {outputPath: out_dir},
+      '&&',
+      'cp',
       '-r',
       {inputPath: dir_1},
       {inputPath: dir_2},
