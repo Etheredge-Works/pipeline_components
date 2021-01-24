@@ -7,14 +7,8 @@ outputs:
 - {name: out_dir, type: LocalPath}
 implementation:
   container:
-    image: alpine:latest
-    command: ['mkdir']
+    image: etheredgeb/join_data:latest
     args: [
-      '-p', 
-      {outputPath: out_dir},
-      '&&',
-      'cp',
-      '-r',
       {inputPath: dir_1},
       {inputPath: dir_2},
       {outputPath: out_dir},
