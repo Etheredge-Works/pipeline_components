@@ -10,7 +10,7 @@ implementation:
     image: alpine:latest
     command: ['mkdir']
     args: [
-      'mkdir', '-p', 
+      '-p', 
       {outputPath: out_dir},
       '&&',
       'cp',
