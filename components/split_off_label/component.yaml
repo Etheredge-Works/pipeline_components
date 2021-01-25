@@ -1,0 +1,17 @@
+name: Split off Label Data
+description: Split labels from date
+inputs: 
+- {name: data_dir, type: LocalPath}
+- {name: label, type: String}
+outputs:
+- {name: label_dir}
+- {name: other_dir}
+implementation:
+  container:
+    image: etheredgeb/split_off_label:latest
+    args: [
+      --data-dir, {inputPath: data_dir},
+      --label, {inputValue: label},
+      --label-dir, {inputPath: label_dir},
+      --other-dir, {inputPath: other_dir},
+    ]
