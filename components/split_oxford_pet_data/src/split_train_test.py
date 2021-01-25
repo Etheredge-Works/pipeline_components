@@ -35,7 +35,7 @@ def main(data_dir, ratio, train_dir, test_dir, random_seed):
         shutil.rmtree(str(test_dir))
     test_dir.mkdir(parents=True)
 
-    all_files = list(dir.glob('*jpg'))
+    all_files = list(data_dir.glob('*jpg'))
     assert len(all_files) > 0
     '''
     for file in all_files:
@@ -47,9 +47,12 @@ def main(data_dir, ratio, train_dir, test_dir, random_seed):
     '''
     
     def get_label(filename):
-        return re.search(r'^(.*)_\d+\.jpg$', filename)
+        return re.search(r'^(.*)_\d+\.jpg$', basename(filename)).group(0)
 
-    labels = set([get_label(str(file)) for file in all_files])
+    labels = list(set([get_label(str(file)) for file in all_files]))
+    for label in labels:
+        print(f"test_label: {label}")
+
     for item in labels:
         assert item is not None
     label_count = len(labels)
@@ -62,6 +65,7 @@ def main(data_dir, ratio, train_dir, test_dir, random_seed):
     test_label_count = int(ratio * label_count)
     shuffle(labels)
     test_labels = labels[:test_label_count]
+
     for file in all_files:
         if get_label(str(file)) in test_labels:
             shutil.copyfile(file, str(test_dir / basename(file)))
@@ -71,6 +75,9 @@ def main(data_dir, ratio, train_dir, test_dir, random_seed):
     #copy_files(all_main_coon_files, test_dir)
     #copy_files(all_boxer_files, test_dir)
 
+    if ratio > 0:
+        assert len(test_labels) > 0
+        assert len(list(test_dir.glob('*'))) > 0
 
     #train_files = all_files[test_files_count:]
     #copy_files(train_files, train_dir)
