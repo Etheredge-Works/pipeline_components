@@ -12,6 +12,6 @@ implementation:
     args: [
       --data-dir, {inputPath: data_dir},
       --label, {inputValue: label},
-      --label-dir, {inputPath: label_dir},
-      --other-dir, {inputPath: other_dir},
+      --label-dir, {outputPath: label_dir},
+      --other-dir, {outputPath: other_dir},
     ]
