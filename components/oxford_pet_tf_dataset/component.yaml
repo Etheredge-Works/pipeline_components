@@ -15,5 +15,5 @@ implementation:
         --height, {inputValue: height},
         --width, {inputValue: width},
         --tf-data-dir, {outputPath: tf_data_dir},
-        --tf-label-dir, {outputPath: tf_data_dir},
+        --tf-label-dir, {outputPath: tf_label_dir},
     ]
