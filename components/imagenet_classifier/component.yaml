@@ -1,0 +1,23 @@
+name: Imagenet Classifier
+description: TODO
+inputs: 
+- {name: data_tf_data_dir, type: LocalPath}
+- {name: label_tf_data_dir, type: LocalPath}
+- {name: height, type: Integer}
+- {name: width, type: Integer}
+- {name: random_seed, default: 4, type: Integer}
+- {name: dense_nodes, default: 32, type: Integer}
+outputs:
+- {name: model_dir, type: LocalPath}
+implementation:
+  container:
+    image: etheredgeb/split_oxford_pet_data:latest
+    args: [
+      --data-dir, {inputPath: data_dir},
+      --height, {inputValue: height},
+      --width, {inputValue: width},
+      --label-dir, {inputPath: label_dir},
+      --random-seed, {inputValue: random_seed},
+      --dense-nodes, {inputValue: dense_nodes},
+      --model-dir, {outputPath: model_dir}
+    ]
