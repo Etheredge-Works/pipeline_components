@@ -11,12 +11,16 @@ import click
 @click.option('--tf-data-dir', type=click.Path(exists=False), help='')
 @click.option('--tf-label-dir', type=click.Path(exists=False), help='')
 def main(
-        data_dir: Path, 
+        data_dir: str, 
         height: int,
         width: int,
-        tf_data_dir: Path,
-        tf_label_dir: Path,
+        tf_data_dir: str,
+        tf_label_dir: str,
 ):
+    data_dir = Path(data_dir)
+    tf_data_dir = Path(tf_data_dir)
+    tf_label_dir = Path(tf_label_dir)
+
     tf_data_dir.mkdir(parents=True)
     tf_label_dir.mkdir(parents=True)
     filename_ds = tf.data.Dataset.list_files(
@@ -32,7 +36,7 @@ def main(
 
 
     ds = filename_ds.map(file_decode)
-    tf.data.experimental.save(ds, tf_data_dir)
+    tf.data.experimental.save(ds, str(tf_data_dir))
 
 
     all_files_tf = tf.io.gfile.listdir(str(data_dir)) # gets just file name
@@ -50,7 +54,7 @@ def main(
         return tf.argmax(tf.cast(one_hot, tf.uint8)) # must cast since is bool
 
     label_ds = filename_ds.map(get_label)
-    tf.data.experimental.save(label_ds, tf_label_dir)
+    tf.data.experimental.save(label_ds, str(tf_label_dir))
 
 
 if __name__ == "__main__":
