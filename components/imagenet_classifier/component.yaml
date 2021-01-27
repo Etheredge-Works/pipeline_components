@@ -11,7 +11,7 @@ outputs:
 - {name: model_dir, type: LocalPath}
 implementation:
   container:
-    image: etheredgeb/imagenet_classifer:latest
+    image: etheredgeb/imagenet_classifier:latest
     args: [
       --data-dir, {inputPath: data_dir},
       --height, {inputValue: height},
