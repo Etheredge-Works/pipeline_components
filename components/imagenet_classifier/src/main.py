@@ -5,7 +5,7 @@ from os.path import basename
 import click
 import tensorflow as tf
 from tensorflow.keras import Model
-from tensorflow.keras.layers import Flatten, Dense, Droput
+from tensorflow.keras.layers import Flatten, Dense, Dropout
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.applications.resnet_v2 import ResNet50V2 as pre_trained_model
 from tensorflow.keras.applications.resnet_v2 import preprocess_input
