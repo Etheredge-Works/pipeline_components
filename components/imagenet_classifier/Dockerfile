@@ -1,5 +1,5 @@
-FROM python:3.7
+FROM tensorflow/tensorflow:latest-gpu
 RUN pip install click
 COPY ./src /pipelines/component/src
 WORKDIR /pipelines/component/src
-ENTRYPOINT ["python", "split_train_test.py"]
+ENTRYPOINT ["python", "main.py"]
