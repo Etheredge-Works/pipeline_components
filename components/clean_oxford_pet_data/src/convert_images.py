@@ -28,22 +28,25 @@ def main(data_dir, cleaned_dir_name):
         if(encoded_jpg[0] == 0x89 and encoded_jpg[1] == 0x50 and encoded_jpg[2] == 0x4e and encoded_jpg[3] == 0x47):
             # copy jpg->png then encode png->jpg
             print('png:{}'.format(filename_src))
-            pathname_png = f'{path_images}{os.path.sep}{stem}.png'
+            pathname_png = f'{new_path}{os.path.sep}{stem}.png'
             tf.io.gfile.copy(pathname_jpg, pathname_png, True)
             PIL.Image.open(pathname_png).convert('RGB').save(new_pathname_jpg, "jpeg")
+            os.remove(pathname_png)
         # gif
         elif(encoded_jpg[0] == 0x47 and encoded_jpg[1] == 0x49 and encoded_jpg[2] == 0x46):
             # copy jpg->gif then encode gif->jpg
             print('gif:{}'.format(filename_src))
-            pathname_gif = f'{path_images}{os.path.sep}{stem}.gif'
+            pathname_gif = f'{new_path}{os.path.sep}{stem}.gif'
             tf.io.gfile.copy(pathname_jpg, pathname_gif, True)
             PIL.Image.open(pathname_gif).convert('RGB').save(new_pathname_jpg, "jpeg")
+            os.remove(pathname_gif)
         elif(filename_src == 'beagle_116.jpg' or filename_src == 'chihuahua_121.jpg'):
             # copy jpg->jpeg then encode jpeg->jpg
             print('jpeg:{}'.format(filename_src))
-            pathname_jpeg = f'{path_images}{os.path.sep}{stem}.jpeg'
+            pathname_jpeg = f'{new_path}{os.path.sep}{stem}.jpeg'
             tf.io.gfile.copy(pathname_jpg, pathname_jpeg, True)
             PIL.Image.open(pathname_jpeg).convert('RGB').save(new_pathname_jpg, "jpeg")
+            os.remove(pathname_jpeg)
         elif(encoded_jpg[0] != 0xff or encoded_jpg[1] != 0xd8 or encoded_jpg[2] != 0xff):
             print('not jpg:{}'.format(filename_src))
         else:
