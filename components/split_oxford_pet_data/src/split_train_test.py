@@ -16,13 +16,14 @@ import click
 @click.option('--train-dir', type=click.Path(exists=False), help='')
 @click.option('--test-dir', type=click.Path(exists=False), help='')
 @click.option('--random-seed', type=click.INT, help='')
-def main(data_dir, ratio, train_dir, test_dir, random_seed):
+@click.option('--by-label', type=click.BOOL, default=False, help='')
+def main(data_dir, ratio, train_dir, test_dir, random_seed, by_label):
     seed(random_seed)
     def copy_files(files: list, dir: Path) -> None:
         for file in files:
             shutil.copyfile(str(file), str(dir/basename(file)))
             
-    #dir, ratio, train_dir, test_dir = sys.argv[1:]
+    by_label = 1 if by_label else 0
     data_dir = Path(data_dir)
     ratio = float(ratio)
     assert 0 <= ratio <= 1.0
@@ -47,7 +48,8 @@ def main(data_dir, ratio, train_dir, test_dir, random_seed):
     '''
     
     def get_label(filename):
-        return re.search(r'^(.*)_\d+\.jpg$', basename(filename)).group(0)
+        # either get the whole thing or just the label
+        return re.search(r'^(.*)_\d+\.jpg$', basename(filename)).group(by_label)
 
     labels = list(set([get_label(str(file)) for file in all_files]))
     for label in labels:
