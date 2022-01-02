@@ -3,7 +3,8 @@ name: Build All Components
 
 on: 
   schedule: 
-    cron: "0 0 1 * *" # build once a month
+    # build once a month
+    - cron: "0 0 1 * *"
   workflow_dispatch:
 
 jobs:
