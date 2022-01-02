@@ -6,6 +6,9 @@ on:
     # build once a month
     - cron: "0 0 1 * *"
   workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   docker:
@@ -23,6 +26,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - 
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }} # https://github.com/stefanzweifel/git-auto-commit-action
+
       -
         name: Build and push
         id: docker_build
